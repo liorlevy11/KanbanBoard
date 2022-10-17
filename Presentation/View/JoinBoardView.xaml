@@ -1,0 +1,22 @@
+<Window x:Class="Presentation.View.JoinBoardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Presentation.View"
+        mc:Ignorable="d"
+        Title="JoinBoardView">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/View/vector-blue-squares-abstract-background-geometric.jpg"/>
+        </Grid.Background>
+        <Label Content="Join to a new Board!" HorizontalAlignment="Center" Margin="0,76,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>
+        <Label Content="Board Creator Email:" HorizontalAlignment="Left" Margin="215,141,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Board Name:" HorizontalAlignment="Left" Margin="218,176,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox HorizontalAlignment="Left" Margin="354,146,0,0" Text="{Binding Path=CreatorEmail, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="353,180,0,0" Text="{Binding Path=BoardName,Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Join" HorizontalAlignment="Left" Margin="375,225,0,0" VerticalAlignment="Top" Click="Join_Click" BorderBrush="#FFF6F3FB" Background="#FF030008"/>
+        <Button Content="Back" Margin="600,37,0,357" Click="BackToBoards_Click" Background="#FF070113" BorderBrush="#FFF7F5FB"/>
+
+    </Grid>
+</Window>

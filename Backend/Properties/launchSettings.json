@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Backend": {
+      "commandName": "Project",
+      "workingDirectory": ""
+    }
+  }
+}

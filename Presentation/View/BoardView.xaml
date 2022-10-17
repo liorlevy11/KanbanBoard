@@ -1,0 +1,93 @@
+﻿<Window x:Class="Presentation.View.BoardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Presentation.View"
+        mc:Ignorable="d"
+        Title="Window Board">
+
+    <Grid Margin="10,-62,-28,22">
+        <Grid.Background>
+            <ImageBrush ImageSource="/View/vector-blue-squares-abstract-background-geometric.jpg"/>
+        </Grid.Background>
+        <Grid.Resources>
+
+            <Style x:Key="horizontalListBoxStyle" TargetType="ListBox">
+                <Setter Property="ItemsPanel">
+                    <Setter.Value>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="218*"/>
+            <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="520*"/>
+            <ColumnDefinition Width="289*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="{Binding Path=Title,Mode=OneTime}" Margin="7,9,108,0" VerticalAlignment="Top" Height="25" FontSize="20" FontWeight="ExtraBold"  RenderTransformOrigin="0.5,0.5"/>
+        <ListBox  ItemsSource="{Binding Path=Board.Columns}" SelectedItem="{Binding Path=Board.SelectedColumn, Mode=TwoWay}"  Style="{StaticResource horizontalListBoxStyle}" RenderTransformOrigin="0.428,0.143" Margin="1,52,17,4" >
+            <ListBox.Background>
+                <ImageBrush ImageSource="/View/B1030-B10431.png"/>
+            </ListBox.Background>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black"  BorderThickness="2" Background="WhiteSmoke"  >
+                        <StackPanel Orientation="Vertical" >
+                            <StackPanel Orientation="Horizontal" Background="LightGray"  >
+                                <TextBox Text="{Binding Path=Id, Mode=TwoWay}" BorderBrush="{x:Null}" FontWeight="ExtraBold" HorizontalAlignment="Left" />
+                                <TextBox Text="{Binding Path=Name, Mode=TwoWay}" BorderBrush="{x:Null}" FontWeight="ExtraBold" HorizontalAlignment="Center" Background="{Binding Path=DataContext.BackgroundColor, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
+                                <TextBox Text="{Binding Path=MaxTaskLimit, Mode=TwoWay}" BorderBrush="{x:Null}" Background="{Binding Path=DataContext.BackgroundColor, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
+                            </StackPanel>
+                            <ListBox ItemsSource="{Binding Path=Tasks}" SelectedItem="{Binding Path=SelectedTask, Mode=TwoWay}">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="Background" Value="{Binding Path=BackgroundColor}"/>
+                                        <Setter Property="BorderBrush" Value="{Binding Path=BorderBrush}"/>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderThickness="1" BorderBrush="Black" Background="AliceBlue" >
+                                            <StackPanel Orientation="Vertical" >
+                                                <TextBox Text="{Binding Path=Title, Mode=TwoWay}" FontWeight="Bold" BorderBrush="Black" ></TextBox>
+                                                <TextBox Text="{Binding Path=PlCreationTime, Mode=OneWay}" IsReadOnly="True" />
+                                                <TextBox Text="{Binding Path=Description, Mode=TwoWay}"  />
+                                                <TextBox Text="{Binding Path=NewDueDate, Mode=TwoWay}" />
+                                                <TextBox Text="{Binding Path=AssignEmail, Mode=TwoWay}" />
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Content="LogOut"  Margin="1,22,82,374" Click="LogOut_Click" Grid.Column="1" />
+        <Button Content="Add Column" Margin="1,120,81,276" Click="AddColumn_Click" Grid.Column="1" />
+        <Button Content="Remove Column" Margin="1,168,82,228" Click="RemoveColumn_Click" IsEnabled="{Binding Path=Board.EnableForward,Mode=OneWay}" Grid.Column="1"/>
+        <Button Content="Move Column :" Margin="1,221,81,175" Click="MoveColumn_Click" IsEnabled="{Binding Path=Board.EnableForward,Mode=OneWay}" Grid.Column="1"  />
+        <TextBox Margin="208,330,10,281" Grid.Column="1" RenderTransformOrigin="0.726,2.213" Text="{Binding Path=Step,Mode=TwoWay}" FontWeight="Bold" Width="50" />
+        <Button Content="Back to Boards" Margin="1,74,82,322" Click="Back_Click"  RenderTransformOrigin="0.428,-0.558" Grid.Column="1" />
+        <Button Content="Add Task" Margin="1,269,81,127" Click="AddTask_Click" Grid.Column="1"/>
+        <Button Content="Move Task" Margin="1,320,82,76" Click="AdvanceTask_Click" IsEnabled="{Binding Path=Board.SelectedColumn.EnableForward}" Grid.Column="1" />
+        <Button Content="Filter Tasks:" Margin="5,420,87,14" Click="Filter_Click" Grid.Column="1" Grid.RowSpan="2"/>
+        <TextBox Text="{Binding Path=Filter,Mode=TwoWay}" Margin="93,-300,50,100" Width="350" Grid.Column="1" Height="23" VerticalAlignment="Bottom" Grid.Row="1" FontWeight="ExtraBlack" />
+        <Button Content="Sort Tasks" Margin="1,370,80,26"  Click="Sort_Click" Grid.Column="1"/>
+        <Label Content="Board Members :" HorizontalAlignment="Left" Margin="51,1,0,7" FontWeight="ExtraBold" Width="145" FontSize="16" Grid.Row="1"/>
+        <ListBox ItemsSource="{Binding Path=Board.BoardMember}" FontWeight="ExtraBold" Margin="197,10,86,1" FontSize="16" Grid.Row="1"  />
+
+    </Grid>
+</Window>

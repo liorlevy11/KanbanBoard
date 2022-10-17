@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "sddoqEl0t1ZoSpKlCQRDLH9Pc87LCquKzTMh0lufcw/eGfHQj/LteWpKTVfOzevmoTd5Ajvcmwd9n0OBZBdKYg==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\97253\\OneDrive\\שולחן העבודה\\courses\\b\\מבוא להנדסת תוכנה\\עבודה\\milestone1-hope\\Presentation\\Presentation.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\97253\\.nuget\\packages\\materialdesigncolors\\2.0.1\\materialdesigncolors.2.0.1.nupkg.sha512",
+    "C:\\Users\\97253\\.nuget\\packages\\materialdesignthemes\\4.1.0\\materialdesignthemes.4.1.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1105",
+      "level": "Error",
+      "message": "Unable to find project information for 'C:\\Users\\97253\\OneDrive\\שולחן העבודה\\courses\\b\\מבוא להנדסת תוכנה\\עבודה\\milestone1-hope\\Backend\\Backend.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
+      "libraryId": "C:\\Users\\97253\\OneDrive\\שולחן העבודה\\courses\\b\\מבוא להנדסת תוכנה\\עבודה\\milestone1-hope\\Backend\\Backend.csproj",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    }
+  ]
+}

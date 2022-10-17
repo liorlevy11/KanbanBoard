@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Presentation": {
+      "commandName": "Project",
+      "workingDirectory": ""
+    }
+  }
+}

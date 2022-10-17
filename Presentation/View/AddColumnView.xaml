@@ -1,0 +1,31 @@
+﻿<Window x:Class="Presentation.View.AddColumnView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Presentation.View"
+        mc:Ignorable="d"
+        Title="AddColumnView">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/View/vector-blue-squares-abstract-background-geometric.jpg"/>
+        </Grid.Background>
+        <Label Content="{Binding Path=Title}" HorizontalAlignment="Center" Margin="0,69,0,0" VerticalAlignment="Top" FontWeight="ExtraBold" FontSize="16" Height="57" Width="449"/>
+        <Label Content="Column Name:" FontWeight="Bold" HorizontalAlignment="Left" Margin="259,131,0,0" VerticalAlignment="Top"/>
+        <Label Content="Column Ordinal:" FontWeight="Bold"  HorizontalAlignment="Left" Margin="260,169,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="385,137,0,0" Text="{Binding Path=ColumnName,Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="385,172,0,0" Text="{Binding Path=ColumnOrdinal,Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Add" Margin="400,214,200,180" RenderTransformOrigin="0.5,0.5" Click="Add_Click" BorderBrush="#FFF7F6F9" Background="#FF06010F">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform />
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Back"  Margin="751,65,10,329" Click="Back_Click" Background="#FF0B011B" BorderBrush="#FFF8F6FD"/>
+
+    </Grid>
+</Window>
